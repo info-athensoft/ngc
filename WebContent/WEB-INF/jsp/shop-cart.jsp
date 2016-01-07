@@ -49,6 +49,9 @@
 			<script src="vendor/respond/respond.js"></script>
 			<script src="vendor/excanvas/excanvas.js"></script>
 		<![endif]-->
+		
+		<!-- athensoft local script -->
+    	<script src="js/local/payment/shopping_cart.js"></script>
 
 	</head>
 	<body>
@@ -121,9 +124,11 @@
 														</tr>
 													</thead>
 													<tbody>
+													  <c:forEach var="item" items="${mapProdInCart}">						  	
+													    <c:set var="amount" value="${item.value.price * item.value.qty}"></c:set>
 														<tr class="cart_table_item">
 															<td class="product-remove">
-																<a title="Remove this item" class="remove" href="#">
+																<a title="Remove this item" class="remove" href="javascript:void(0);" onclick="removeProd(${item.value.itemId})">
 																	<i class="fa fa-times"></i>
 																</a>
 															</td>
@@ -133,25 +138,26 @@
 																</a>
 															</td>
 															<td class="product-name">
-																<a href="shop-product-sidebar.html">Photo Camera</a>
+																<a href="shop-product-sidebar.html">${item.value.itemName}</a>
 															</td>
 															<td class="product-price">
-																<span class="amount">$299</span>
+																<span class="amount">${item.value.price}</span>
 															</td>
 															<td class="product-quantity">
 																<form enctype="multipart/form-data" method="post" class="cart">
 																	<div class="quantity">
-																		<input type="button" class="minus" value="-">
-																		<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-																		<input type="button" class="plus" value="+">
+																		<input type="button" class="minus" value="-" onclick="decQty(${item.value.itemId}, ${item.value.qty})" >
+																		<input type="text" class="input-text qty text" title="Qty" value="${item.value.qty}" name="quantity" min="1" step="1" onkeyup="updateCart(${item.value.itemId}, this)" >
+																		<input type="button" class="plus" value="+" onclick="incQty(${item.value.itemId}, ${item.value.qty})" >
 																	</div>
 																</form>
 															</td>
 															<td class="product-subtotal">
-																<span class="amount">$299</span>
+																<span class="amount">${amount}</span>
 															</td>
 														</tr>
-														<tr class="cart_table_item">
+													  </c:forEach>
+													<!-- 	<tr class="cart_table_item">
 															<td class="product-remove">
 																<a title="Remove this item" class="remove" href="#">
 																	<i class="fa fa-times"></i>
@@ -210,11 +216,12 @@
 															<td class="product-subtotal">
 																<span class="amount">$60</span>
 															</td>
-														</tr>
+														</tr>  -->
 														<tr>
 															<td class="actions" colspan="6">
 																<div class="actions-continue">
-																	<input type="submit" value="Update Cart" name="update_cart" class="btn btn-default">
+																	<!-- <input type="submit" value="Update Cart" name="update_cart" class="btn btn-default"> -->
+																	<a class="btn btn-lg btn-primary" href="javascript:goBackShopping();" role="button">Continue shopping</a>
 																</div>
 															</td>
 														</tr>
@@ -256,7 +263,8 @@
 												</div>
 												<div class="row">
 													<div class="col-md-12">
-														<input type="submit" value="Update Totals" class="btn btn-default pull-right push-bottom" data-loading-text="Loading...">
+														<!-- <input type="submit" value="Update Totals" class="btn btn-default pull-right push-bottom" data-loading-text="Loading..."> -->
+														
 													</div>
 												</div>
 											</form>
@@ -274,7 +282,7 @@
 															<strong>Cart Subtotal</strong>
 														</th>
 														<td>
-															<strong><span class="amount">$431</span></strong>
+															<strong><span class="amount">${orderTotal}</span></strong>
 														</td>
 													</tr>
 													<tr class="shipping">
@@ -290,7 +298,7 @@
 															<strong>Order Total</strong>
 														</th>
 														<td>
-															<strong><span class="amount">$431</span></strong>
+															<strong><span class="amount">${orderTotal}</span></strong>
 														</td>
 													</tr>
 												</tbody>

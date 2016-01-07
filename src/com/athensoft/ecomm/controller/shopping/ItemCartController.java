@@ -15,7 +15,7 @@ public class ItemCartController {
 		mav.setViewName("shop-cart");	
 		
 		return mav;
-	}
+	}	
 
 	@RequestMapping("/shop_checkout.do")	
 	public ModelAndView proceedToCheckout(){

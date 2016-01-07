@@ -54,6 +54,9 @@
 			<script src="vendor/respond/respond.js"></script>
 			<script src="vendor/excanvas/excanvas.js"></script>
 		<![endif]-->
+		
+		<!-- athensoft local script -->
+    	<script src="js/local/payment/shopping_cart.js"></script>
 
 	</head>
 	<body>
@@ -116,23 +119,23 @@
 										</div>
 
 										<p class="price">
-											<span class="amount">$22</span>
+											<span class="amount">${item.itemSale.currentPrice}</span>
 										</p>
 
 										<p class="taller">${item.itemDesc}</p>
 										
 										<!-- add to cart -->   
-										<form enctype="multipart/form-data" method="post" class="cart">
+										<!-- <form enctype="multipart/form-data" method="post" class="cart"> -->
 											
 											<div class="quantity">
-												<input type="button" class="minus" value="-">
-												<input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-												<input type="button" class="plus" value="+">
+												<input type="button" class="minus" value="-" onclick="decCurItemQty()">
+												<input type="text" id="currentItemQty" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+												<input type="button" class="plus" value="+" onclick="incCurItemQty()">
 											</div>
 											
-											<button href="#" class="btn btn-primary btn-icon">Add to Cart</button>
+											<button href="javascript:void(0);" class="btn btn-primary btn-icon" onclick="addToCart(${item.itemId})">Add to Cart</button>
 											
-										</form>
+										<!-- </form> -->
 										<!--
 										<button href="#" class="btn btn-primary btn-icon">Add to wishlist</button>
 										<a href="contact_us.do" class="btn btn-primary btn-icon">Contact now</a>

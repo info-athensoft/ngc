@@ -119,7 +119,7 @@
 										<span class="product-thumb-info">
 										
 											<!-- add to cart -->
-											<a href="shop_cart.do" class="add-to-cart-product">
+											<a href="addtocart.do?itemId=${item.itemId}" class="add-to-cart-product">
 												<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
 											</a>
 											
