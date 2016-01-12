@@ -1,7 +1,9 @@
-function goBackShopping() {
+function goBackShopping(loc) {
+//	alert(loc);
     window.history.back();
 	//history.go(-1)
-    //window.location = "ecomm_starter.do";
+//    window.location = "goshopping.do?itemClassId="+loc;
+//    window.location = "goshopping.do";
 }
 
 function removeProd(itemId){
