@@ -1,3 +1,4 @@
+<script src="js/local/payment/shopping_cart.js"></script>
 <div class="navbar-collapse nav-main-collapse collapse">
 	<div class="container">
 	<!-- 
@@ -112,68 +113,82 @@
 					</li>
 					
 					<li class="dropdown mega-menu-item mega-menu-shop">
-									<a class="dropdown-toggle mobile-redirect" href="#">
-										<i class="fa fa-shopping-cart"></i> Cart (1) - $299
-										<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li>
-											<div class="mega-menu-content">
-												<div class="row">
-													<div class="col-md-12">
-			
-														<table cellspacing="0" class="cart">
-															<tbody>
-															  <c:forEach var="item" items="${mapProdInCart}">						  	
-																<c:set var="amount" value="${item.value.price * item.value.qty}"></c:set>
-																<tr>
-																<!-- 	<td class="product-thumbnail">
-																		<a href="shop-product-sidebar.html">
-																			<img width="100" height="100" alt="" class="img-responsive" src="img/products/product-1.jpg">
-																		</a>
-																	</td> -->
-																	<td class="product-name">
-																		<a href="shop-product-sidebar.html">${item.value.itemName}<!-- <span class="amount"><strong>${item.value.price}</strong></span> --></a>
-																	</td>
-																	<td class="product-qty">
-																		<a href="shop-product-sidebar.html"><strong>${item.value.qty}</strong></a>
-																	</td>
-																	<td class="product-times">
-																		<a href="shop-product-sidebar.html"><strong>X</strong></a>
-																	</td>
-																	<td class="product-price">
-																		<a href="shop-product-sidebar.html"><strong>${item.value.price}</strong></a>
-																	</td>
-																	<td class="product-equals">
-																		<a href="shop-product-sidebar.html"><strong>=</strong></a>
-																	</td>
-																	<td class="product-amount">
-																		<a href="shop-product-sidebar.html"><strong>${amount}</strong></a>
-																	</td>
-																	<td class="product-actions">
-																		<a title="Remove this item" class="remove" href="javascript:void(0);" onclick="removeProd(${item.value.itemId})">
-																			<i class="fa fa-times"></i>
-																		</a>
-																	</td>
-																</tr>
-															  </c:forEach>
-																<tr>
-																	<td class="actions" colspan="6">
-																		<div class="actions-continue">
-																		<input type="submit" value="View All" class="btn btn-default">
-																		<input type="submit" value="Proceed to Checkout" name="proceed" class="btn pull-right btn-primary" onclick="proceed_checkout()">
-																		</div>
-																	</td>
-																</tr>
-															</tbody>
-														</table>
-			
-													</div>
-												</div>
+						<a class="dropdown-toggle mobile-redirect" href="#">
+							<i class="fa fa-shopping-cart"></i> Cart (
+							<c:choose>
+							    <c:when test="${orderQuantity>0}">
+							        ${orderQuantity}
+							    </c:when>
+							    <c:otherwise>
+							        0
+							    </c:otherwise>
+							</c:choose>
+							
+							)<!--  - $${doubleCartSubTotal} -->
+							<i class="fa fa-angle-down"></i>
+						</a>
+						
+						<c:if test="${orderQuantity>0}">
+							<ul class="dropdown-menu">
+								<li>
+									<div class="mega-menu-content">
+										<div class="row">
+											<div class="col-md-12">
+	
+												<table cellspacing="0" class="cart">
+													<tbody>
+													  <c:forEach var="item" items="${mapProdInCart}">						  	
+														<c:set var="amount" value="${item.value.price * item.value.qty}"></c:set>
+														<tr>
+														<!-- 	<td class="product-thumbnail">
+																<a href="shop-product-sidebar.html">
+																	<img width="100" height="100" alt="" class="img-responsive" src="img/products/product-1.jpg">
+																</a>
+															</td> -->
+															<td class="product-name">
+																<a href="viewitemdetail.do?itemId=${item.key}">${item.value.itemName}</a>
+															</td>
+															<td class="product-qty">
+																<a href="viewitemdetail.do?itemId=${item.key}"><strong>${item.value.qty}</strong></a>
+															</td>
+															<td class="product-times">
+																<a title="Remove this item" class="remove" href="javascript:void(0);" onclick="removeProd(${item.value.itemId})"><strong> X &nbsp;&nbsp;</strong></a>
+															</td>
+															<td class="product-price">
+																<a href="shop-product-sidebar.html"><strong>${item.value.price}</strong></a>
+															</td>
+															<td class="product-equals">
+																<a href="shop-product-sidebar.html"><strong>=</strong></a>
+															</td>
+															<td class="product-amount">
+																<a href="shop-product-sidebar.html"><strong>${amount}</strong></a>
+															</td>
+															<td class="product-actions">
+																<a title="Remove this item" class="remove" href="javascript:void(0);" onclick="removeProd(${item.value.itemId})">
+																	<i class="fa fa-times"></i>
+																</a>
+															</td>
+														</tr>
+													  </c:forEach>
+														<tr>
+															<td class="actions" colspan="6">
+																<div class="actions-continue">
+																<input type="submit" value="View All" class="btn btn-default" onclick="nav_view_cart()">
+																<input type="submit" value="Proceed to Checkout" name="proceed" class="btn pull-right btn-primary" onclick="proceed_checkout()">
+																</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+	
 											</div>
-										</li>
-									</ul>
+										</div>
+									</div>
 								</li>
+							</ul>
+						</c:if>
+						
+					</li>
 					
 				</ul>
 			</nav>

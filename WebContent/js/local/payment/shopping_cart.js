@@ -1,9 +1,9 @@
 function goBackShopping(loc) {
 //	alert(loc);
-    window.history.back();
+//    window.history.back();
 	//history.go(-1)
 //    window.location = "goshopping.do?itemClassId="+loc;
-//    window.location = "goshopping.do";
+    window.location = loc;
 }
 
 function removeProd(itemId){
@@ -67,6 +67,11 @@ function addToCart(itemId){
 	//$('input.itemid').match('integer', 'must be integer!');
 	//alert("updateCart value=");	
 }
+
+function nav_view_cart(){
+	window.location= "shop_cart.do";
+}
+
 
 function decCurItemQty(){
 	qty = $('#currentItemQty').val();

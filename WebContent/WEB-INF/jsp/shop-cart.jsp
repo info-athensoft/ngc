@@ -63,7 +63,7 @@
 				<!-- header banner -->
 
 				<!-- menu -->
-				<%@ include file="../../02_nav_inc.html" %>
+				<%@ include file="../../02_nav_inc.jsp" %>
 				<!-- menu -->
 			</header>
 
@@ -221,7 +221,7 @@
 															<td class="actions" colspan="6">
 																<div class="actions-continue">
 																	<!-- <input type="submit" value="Update Cart" name="update_cart" class="btn btn-default"> -->
-																	<a class="btn btn-lg btn-primary" href="javascript:goBackShopping(${item.itemClassId});" role="button">Continue shopping</a>
+																	<a class="btn btn-lg btn-primary" href="javascript:goBackShopping('${preShoppingPage}');" role="button">Continue shopping</a>
 																</div>
 															</td>
 														</tr>

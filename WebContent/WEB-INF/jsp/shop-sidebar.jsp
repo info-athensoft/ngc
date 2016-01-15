@@ -65,7 +65,7 @@
 				<!-- header banner -->
 
 				<!-- menu -->
-				<%@ include file="../../02_nav_inc.html" %>
+				<%@ include file="../../02_nav_inc.jsp" %>
 				<!-- menu -->
 			</header>
 

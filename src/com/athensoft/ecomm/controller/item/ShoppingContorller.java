@@ -102,14 +102,19 @@ public class ShoppingContorller {
 	public ModelAndView addToCart(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/shop_cart.do");	
-		
+
 		//
 		System.out.println("entering AddToCartServlet ...");
+
 		String strItemId = (String)request.getParameter("itemId");
 		System.out.println("prodId = "+strItemId);
 		String qty = (String)request.getParameter("qty");
 		System.out.println("qty = "+qty);
 		HttpSession session = request.getSession(true);
+		
+		String preShoppingPage = request.getHeader("Referer"); //request.getHeader("Referer").getPath()
+		System.out.println("preShoppingPage = "+preShoppingPage);
+		session.setAttribute("preShoppingPage", preShoppingPage.substring(preShoppingPage.lastIndexOf('/') + 1));
 		
 		boolean isProdInCart = mapProdInCart.containsKey(strItemId);
 		if(isProdInCart){
@@ -516,7 +521,5 @@ public class ShoppingContorller {
 				          - this.doubleDiscount;
 		return orderTotal;
 	}
-	
-	
 	
 }

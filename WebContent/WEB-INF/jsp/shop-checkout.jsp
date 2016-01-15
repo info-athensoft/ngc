@@ -61,7 +61,7 @@
 				<!-- header banner -->
 
 				<!-- menu -->
-				<%@ include file="../../02_nav_inc.html" %>
+				<%@ include file="../../02_nav_inc.jsp" %>
 				<!-- menu -->
 			</header>
 
@@ -324,7 +324,7 @@
 															<strong>Cart Subtotal</strong>
 														</th>
 														<td>
-															<strong><span class="amount">$431</span></strong>
+															<strong><span class="amount">$${orderTotal}</span></strong>
 														</td>
 													</tr>
 													<tr class="shipping">
@@ -340,7 +340,7 @@
 															<strong>Order Total</strong>
 														</th>
 														<td>
-															<strong><span class="amount">$431</span></strong>
+															<strong><span class="amount">$${orderTotal}</span></strong>
 														</td>
 													</tr>
 												</tbody>
@@ -390,7 +390,7 @@
 											<strong>Cart Subtotal</strong>
 										</th>
 										<td>
-											<strong><span class="amount">$431</span></strong>
+											<strong><span class="amount">$${orderTotal}</span></strong>
 										</td>
 									</tr>
 									<tr class="shipping">
@@ -406,7 +406,7 @@
 											<strong>Order Total</strong>
 										</th>
 										<td>
-											<strong><span class="amount">$431</span></strong>
+											<strong><span class="amount">$${orderTotal}</span></strong>
 										</td>
 									</tr>
 								</tbody>
