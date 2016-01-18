@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page language="java"%>
-<%@ page pageEncoding="utf-8"%><!DOCTYPE html>
+<%@ page pageEncoding="utf-8"%>
 
+<!DOCTYPE html>
 <html>
 	<head>
 
@@ -63,7 +64,7 @@
 				<!-- header banner -->
 
 				<!-- menu -->
-				<%@ include file="../../02_nav_inc.html" %>
+				<%@ include file="../../02_nav_inc.jsp" %>
 				<!-- menu -->
 			</header>
 
